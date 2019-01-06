@@ -1,1 +1,1 @@
-[vintagethreads.clothing](vintagethreads.clothing)
+[vintagethreads.clothing](http://www.vintagethreads.clothing)
