@@ -7,18 +7,22 @@ body,
   box-sizing: border-box;
 }
 
-body {
-  background-color: black;
+html {
+  overflow: hidden;
 }
 
-.gallery {
+body {
+  background-color: black;
+  overflow-y: scroll;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 1000px;
-  display: grid;
+}
 
+$max-content-width: 1000px;
+
+.gallery {
+  max-width: $max-content-width;
+  margin: 0 auto;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-auto-rows: min-content;
   grid-template-areas:
@@ -28,7 +32,6 @@ body {
     'adidas-jacket reebok-jacket'
     'adidas-tee adidas-tee'
     'nike-jacket marvel-tee';
-  
 
   .item {
     width: 100%;
@@ -67,6 +70,32 @@ body {
       grid-area: marvel-tee;
       img {
         object-position: 90% 0;
+      }
+    }
+  }
+}
+
+.links {
+  position: fixed;
+  left: 20px;
+  // for larger screens that hit max content width, fix the buttons to the edge of the content
+  @media (min-width: $max-content-width) {
+    left: calc(((100vw - #{$max-content-width}) / 2) + 20px);
+  }
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__link {
+    &--depop {
+      img {
+        width: 150px;
+      }
+    }
+    &--etsy {
+      display: none;
+      img {
+        width: 60px;
       }
     }
   }
