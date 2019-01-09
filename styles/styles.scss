@@ -1,0 +1,73 @@
+html,
+body,
+.gallery {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+.gallery {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1000px;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  grid-auto-rows: min-content;
+  grid-template-areas:
+    'tommy-crew tommy-crew'
+    'melwinter-crew melwinter-crew'
+    'adidas-jacket reebok-jacket'
+    'adidas-jacket reebok-jacket'
+    'adidas-tee adidas-tee'
+    'nike-jacket marvel-tee';
+  
+
+  .item {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &--tommy-crew {
+      grid-area: tommy-crew;
+      img {
+        object-position: 50% 14%;
+      }
+    }
+    &--adidas-jacket {
+      grid-area: adidas-jacket;
+      img {
+        object-position: 35% 15%;
+      }
+    }
+    &--adidas-tee {
+      grid-area: adidas-tee;
+    }
+    &--reebok-jacket {
+      grid-area: reebok-jacket;
+    }
+    &--melwinter-crew {
+      grid-area: melwinter-crew;
+    }
+    &--nike-jacket {
+      grid-area: nike-jacket;
+    }
+    &--marvel-tee {
+      grid-area: marvel-tee;
+      img {
+        object-position: 90% 0;
+      }
+    }
+  }
+}
