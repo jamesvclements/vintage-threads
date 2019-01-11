@@ -13,18 +13,31 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: white;
   overflow-y: scroll;
-  position: relative;
+}
+@media (min-width: 1000px) {
+  body {
+    padding-top: 50px;
+  }
 }
 
 .gallery {
-  max-width: 1000px;
   margin: 0 auto;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-auto-rows: min-content;
   grid-template-areas: "tommy-crew tommy-crew" "melwinter-crew melwinter-crew" "adidas-jacket reebok-jacket" "adidas-jacket reebok-jacket" "adidas-tee adidas-tee" "nike-jacket marvel-tee";
+}
+.gallery__overlay {
+  display: none;
+  position: fixed;
+  top: 50vh;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, black);
 }
 .gallery .item {
   width: 100%;
@@ -66,27 +79,60 @@ body {
   object-position: 90% 0;
 }
 
-.links {
+.banner {
+  z-index: 1;
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  max-width: 1000px;
+  height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: white;
 }
 @media (min-width: 1000px) {
-  .links {
-    left: calc(((100vw - 1000px) / 2) + 20px);
+  .banner {
+    left: calc((100vw - 1000px) / 2);
   }
 }
-.links__link--depop img {
+.banner__human {
+  position: absolute;
+  left: -45px;
+  bottom: 0;
   width: 150px;
+  bottom: -25px;
 }
-.links__link--etsy {
-  display: none;
+.banner__actions {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: calc((150px / 2) + 3%);
+  padding-right: 3%;
 }
-.links__link--etsy img {
-  width: 60px;
+.banner__actions__link {
+  margin-left: 15px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.banner__actions__link:hover {
+  background: #f7f7f7;
+}
+.banner__actions__link:active {
+  background: #f2f2f2;
+}
+.banner__actions__link--depop img {
+  display: block;
+  width: 75px;
+}
+.banner__actions__link--etsy img {
+  display: block;
+  width: 47px;
+}
+.banner__actions__link--instagram img {
+  display: block;
+  width: 18px;
 }
 
 /*# sourceMappingURL=styles.css.map */
