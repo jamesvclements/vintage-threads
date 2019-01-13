@@ -17,6 +17,7 @@ html {
 body {
   background-color: white;
   overflow-y: scroll;
+  padding-bottom: $banner-height;
   // top padding to match banner for screens w/ visible side padding
   @media (min-width: $max-content-width) {
     padding-top: $banner-height;
@@ -41,17 +42,6 @@ body {
     'adidas-tee adidas-tee'
     'nike-jacket marvel-tee';
 
-  &__overlay {
-    // TODO - how to scroll gallery
-    display: none;
-    position: fixed;
-    top: 50vh;
-    width: 100%;
-    max-width: $max-content-width;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, black);
-  }
-
   .item {
     width: 100%;
     height: 100%;
@@ -61,6 +51,7 @@ body {
       object-fit: cover;
     }
 
+    // use object-position so responsive images maintain focal point
     &--tommy-crew {
       grid-area: tommy-crew;
       img {
@@ -100,52 +91,94 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: $banner-height;
   max-width: $max-content-width;
   // for larger screens that hit max content width, fix the buttons to the edge of the content
   @media (min-width: $max-content-width) {
     left: calc((100vw - #{$max-content-width}) / 2);
   }
-  height: $banner-height;
   display: flex;
   background-color: white;
-  $human-width: 150px;
-
 
   &__circle {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background-color: white;
     position: absolute;
-    left: -250px;
-    top: -150px;
+    left: -187px;
+    top: -128px;
   }
   &__human {
-    // TODO - responsive human positioning
     position: absolute;
     left: -45px;
     bottom: 0;
-    width: $human-width;
+    width: 150px;
     bottom: -25px;
-    // TODO - animate shirt colors
-    // svg {
-    //   path {
-    //     &#Coat-Back {
-    //       fill: red;
-    //     }
-    //   }
-    // }
+
+    // clothing colors to cycle through
+    $cg-red: #eb3c24;
+    $dark-puce: #493843;
+    $tango-pink: #dd7373;
+    $bdazzled-blue: #235789;
+    $raisin-black: #262626;
+
+    @mixin define-cycle-color-keyframe($keyframe-name, $percentage: 0%) {
+      // keyframes need to be pre-defined so use a dynamic name
+      @keyframes #{$keyframe-name} {
+        0% {
+          fill: darken($cg-red, $percentage);
+        }
+        25% {
+          fill: darken($dark-puce, $percentage);
+        }
+        50% {
+          fill: darken($tango-pink, $percentage);
+        }
+        75% {
+          fill: darken($bdazzled-blue, $percentage);
+        }
+        100% {
+          fill: darken($raisin-black, $percentage);
+        }
+      }
+    }
+
+    @include define-cycle-color-keyframe(cycle-colors-normal);
+    @include define-cycle-color-keyframe(cycle-colors-darkened, 10%);
+
+    @mixin use-cycle-color-animation($keyframe-name) {
+      animation: $keyframe-name 5s infinite;
+      animation-timing-function: steps(1, end);
+    }
+
+    &__coat {
+      &--front {
+        @include use-cycle-color-animation(cycle-colors-normal);
+      }
+      &--back {
+        @include use-cycle-color-animation(cycle-colors-darkened);
+      }
+    }
+    &__shorts {
+      &--front {
+        @include use-cycle-color-animation(cycle-colors-normal);
+        animation-delay: 2s;
+      }
+      &--back {
+        @include use-cycle-color-animation(cycle-colors-darkened);
+        animation-delay: 2s;
+      }
+    }
   }
   &__actions {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: calc((#{$human-width} / 2) + 3%);
-    padding-right: 3%;
+    padding-left: 100px;
+    justify-content: space-evenly;
     &__link {
-      margin-left: 15px;
       border-radius: 5px;
       padding: 5px 10px;
       &:hover {

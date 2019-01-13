@@ -14,6 +14,7 @@ html {
 body {
   background-color: white;
   overflow-y: scroll;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
 }
@@ -32,15 +33,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-auto-rows: min-content;
   grid-template-areas: "tommy-crew tommy-crew" "melwinter-crew melwinter-crew" "adidas-jacket reebok-jacket" "adidas-jacket reebok-jacket" "adidas-tee adidas-tee" "nike-jacket marvel-tee";
-}
-.gallery__overlay {
-  display: none;
-  position: fixed;
-  top: 50vh;
-  width: 100%;
-  max-width: 1000px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, black);
 }
 .gallery .item {
   width: 100%;
@@ -88,9 +80,8 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100px;
-  max-width: 1000px;
   height: 50px;
+  max-width: 1000px;
   display: flex;
   background-color: white;
 }
@@ -100,13 +91,13 @@ body {
   }
 }
 .banner__circle {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  left: -250px;
-  top: -150px;
+  left: -187px;
+  top: -128px;
 }
 .banner__human {
   position: absolute;
@@ -115,16 +106,67 @@ body {
   width: 150px;
   bottom: -25px;
 }
+@keyframes cycle-colors-normal {
+  0% {
+    fill: #eb3c24;
+  }
+  25% {
+    fill: #493843;
+  }
+  50% {
+    fill: #dd7373;
+  }
+  75% {
+    fill: #235789;
+  }
+  100% {
+    fill: #262626;
+  }
+}
+@keyframes cycle-colors-darkened {
+  0% {
+    fill: #ca2912;
+  }
+  25% {
+    fill: #2c2229;
+  }
+  50% {
+    fill: #d34a4a;
+  }
+  75% {
+    fill: #193d60;
+  }
+  100% {
+    fill: #0d0d0d;
+  }
+}
+.banner__human__coat--front {
+  animation: cycle-colors-normal 5s infinite;
+  animation-timing-function: steps(1, end);
+}
+.banner__human__coat--back {
+  animation: cycle-colors-darkened 5s infinite;
+  animation-timing-function: steps(1, end);
+}
+.banner__human__shorts--front {
+  animation: cycle-colors-normal 5s infinite;
+  animation-timing-function: steps(1, end);
+  animation-delay: 2s;
+}
+.banner__human__shorts--back {
+  animation: cycle-colors-darkened 5s infinite;
+  animation-timing-function: steps(1, end);
+  animation-delay: 2s;
+}
 .banner__actions {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  padding-left: calc((150px / 2) + 3%);
-  padding-right: 3%;
+  padding-left: 100px;
+  justify-content: space-evenly;
 }
 .banner__actions__link {
-  margin-left: 15px;
   border-radius: 5px;
   padding: 5px 10px;
 }
