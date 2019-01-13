@@ -14,6 +14,11 @@ html {
   overflow: hidden;
 }
 
+a {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 body {
   background-color: white;
   overflow-y: scroll;
@@ -33,7 +38,6 @@ body {
   max-width: $max-content-width;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  grid-auto-rows: min-content;
   grid-template-areas:
     'tommy-crew tommy-crew'
     'melwinter-crew melwinter-crew'
@@ -176,7 +180,7 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 100px;
+    padding-left: 112px;
     justify-content: space-evenly;
     &__link {
       border-radius: 5px;
