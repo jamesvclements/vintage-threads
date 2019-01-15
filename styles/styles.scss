@@ -15,13 +15,16 @@ html {
 }
 
 a {
-  -webkit-appearance: none;
+  // remove grey tap highlight on mobile
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border-radius: 0;
 }
 
 body {
   background-color: white;
   overflow-y: scroll;
+  // momentum scrolling for touch devices
+  -webkit-overflow-scrolling: touch;
   padding-bottom: $banner-height;
   // top padding to match banner for screens w/ visible side padding
   @media (min-width: $max-content-width) {
@@ -191,6 +194,7 @@ body {
       font-size: 13px;
       text-align: right;
       padding-right: 15px;
+      min-width: fit-content;
     }
     &__link {
       border-radius: 5px;
@@ -207,19 +211,22 @@ body {
       &--depop {
         img {
           display: block;
-          width: 75px;
+          width: 100%;
+          max-width: 75px;
         }
       }
       &--etsy {
         img {
           display: block;
-          width: 47px;
+          width: 100%;
+          max-width: 47px;
         }
       }
       &--instagram {
         img {
           display: block;
-          width: 18px;
+          width: 100%;
+          max-width: 18px;
         }
       }
     }

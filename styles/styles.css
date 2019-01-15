@@ -12,13 +12,14 @@ html {
 }
 
 a {
-  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border-radius: 0;
 }
 
 body {
   background-color: white;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 60px;
   display: flex;
   flex-direction: column;
@@ -178,6 +179,7 @@ body {
   font-size: 13px;
   text-align: right;
   padding-right: 15px;
+  min-width: fit-content;
 }
 .banner__actions__link {
   border-radius: 5px;
@@ -194,15 +196,18 @@ body {
 }
 .banner__actions__link--depop img {
   display: block;
-  width: 75px;
+  width: 100%;
+  max-width: 75px;
 }
 .banner__actions__link--etsy img {
   display: block;
-  width: 47px;
+  width: 100%;
+  max-width: 47px;
 }
 .banner__actions__link--instagram img {
   display: block;
-  width: 18px;
+  width: 100%;
+  max-width: 18px;
 }
 
 /*# sourceMappingURL=styles.css.map */
