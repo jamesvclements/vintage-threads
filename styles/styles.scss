@@ -38,14 +38,6 @@ body {
   -webkit-overflow-scrolling: touch;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  grid-template-areas:
-    'tommy-crew tommy-crew'
-    'melwinter-crew melwinter-crew'
-    'tommy-vest tommy-vest'
-    'adidas-jacket reebok-jacket'
-    'adidas-jacket reebok-jacket'
-    'adidas-tee adidas-tee'
-    'nike-jacket marvel-tee';
 
   .item {
     width: 100%;
@@ -55,37 +47,30 @@ body {
       height: 100%;
       object-fit: cover;
     }
+    grid-column: 1 / span 2;
 
     // use object-position so responsive images maintain focal point
     &--tommy-crew {
-      grid-area: tommy-crew;
       img {
         object-position: 50% 14%;
       }
     }
     &--adidas-jacket {
-      grid-area: adidas-jacket;
       img {
         object-position: 35% 15%;
       }
     }
-    &--tommy-vest {
-      grid-area: tommy-vest;
-    }
-    &--adidas-tee {
-      grid-area: adidas-tee;
-    }
     &--reebok-jacket {
-      grid-area: reebok-jacket;
-    }
-    &--melwinter-crew {
-      grid-area: melwinter-crew;
+      grid-column: span 1;
     }
     &--nike-jacket {
-      grid-area: nike-jacket;
+      grid-column: span 1;
+    }
+    &--adidas-jacket {
+      grid-column: span 1;
     }
     &--marvel-tee {
-      grid-area: marvel-tee;
+      grid-column: span 1;
       img {
         object-position: 90% 0;
       }
@@ -191,7 +176,8 @@ body {
     &__link {
       border-radius: 5px;
       padding: 0 10px;
-      height: calc(0.65 * #{$banner-height});
+      height: calc(0.75 * #{$banner-height});
+      max-height: 50px;
       display: flex;
       align-items: center;
       &:hover {
