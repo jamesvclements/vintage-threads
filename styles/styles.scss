@@ -22,10 +22,6 @@ a {
 
 body {
   background-color: white;
-  overflow-y: scroll;
-  // momentum scrolling for touch devices
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: $banner-height;
   // top padding to match banner for screens w/ visible side padding
   @media (min-width: $max-content-width) {
     padding-top: $banner-height;
@@ -33,12 +29,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .gallery {
   margin: 0 auto;
-  flex-grow: 1;
   width: 100%;
   max-width: $max-content-width;
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   grid-template-areas:
@@ -97,12 +94,8 @@ body {
 }
 
 .banner {
-  z-index: 1;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: $banner-height;
+  position: relative;
+  flex: 0 0 $banner-height;
   max-width: $max-content-width;
   // for larger screens that hit max content width, fix the buttons to the edge of the content
   @media (min-width: $max-content-width) {
